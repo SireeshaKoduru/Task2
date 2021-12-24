@@ -1,4 +1,4 @@
-FROM php:8.0.10-cli
+FROM php:8.0-fpm
 
 COPY composer.lock composer.json /var/www/
 
@@ -21,4 +21,4 @@ EXPOSE 9000
 
 USER root
 
-CMD ["php-cli"]
+CMD ["php-fpm"]
