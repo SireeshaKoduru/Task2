@@ -12,7 +12,7 @@ services:
     volumes:
       - ./:/var/www
     networks:
-      - app-network
+      - app_network
 
   # nginx service - PORT 80
   nginx:
@@ -24,24 +24,25 @@ services:
       - ./:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
     networks:
-      - app-network
+      - app_network
 
   # mysql service
   db:
-    image: mariadb:latest
-    container_name: db
-    ports:
-      - "1306:3306"
+    image: "mysql:8.0"
+    command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_DATABASE: laravel
-      MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: laravel
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_USER: tiger
+        MYSQL_PASSWORD: tiger
     volumes:
       - db_volume:/var/lib/mysql/
+      - "./docker/mysql:/docker-entrypoint-initdb.d"
     networks:
-      - app-network
+      - app_network
 
 networks:
-  app-network:
+  app_network:
     driver: bridge
 
 volumes:
