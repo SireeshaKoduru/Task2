@@ -1,0 +1,8 @@
+
+CREATE TABLE `Banks` ( `Bank Name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,   
+ `City` varchar(255) COLLATE utf8_unicode_ci NOT NULL, 
+  `country` varchar(255) COLLATE utf8_unicode_ci NOT NULL, `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL )
+   ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  INSERT INTO `Banks` (`Bank NAME`, `City`, `country`, `created_at`, `updated_at`) VALUES('icici', 'hyderabad', 'India');
+
